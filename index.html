@@ -1,353 +1,238 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Central de Atendimento · Verde & Branco</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Economia Móveis Novos LTDA</title>
 
-    body {
-      background: #f2faf0;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-    }
+<style>
+body{
+font-family: Arial, sans-serif;
+margin:0;
+background:#f5f5f5;
+color:#333;
+}
 
-    .health-card {
-      max-width: 900px;
-      width: 100%;
-      background-color: #ffffff;
-      border-radius: 2.8rem 2.8rem 2.4rem 2.4rem;
-      box-shadow: 0 25px 45px -14px rgba(33, 94, 33, 0.3),
-                  0 10px 20px -5px rgba(0, 60, 0, 0.15);
-      overflow: hidden;
-    }
+header{
+background:#1e3a5f;
+color:white;
+padding:20px;
+text-align:center;
+}
 
-    .header-saude {
-      background: linear-gradient(135deg, #146b2e 0%, #2d8f4a 100%);
-      padding: 2.2rem 3rem 1.8rem 3rem;
-      color: white;
-      border-bottom: 3px solid #c3e9c3;
-    }
+nav{
+background:#162b45;
+padding:10px;
+text-align:center;
+}
 
-    .header-saude h1 {
-      font-size: 2.3rem;
-      font-weight: 600;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 0.6rem;
-    }
+nav a{
+color:white;
+margin:10px;
+text-decoration:none;
+font-weight:bold;
+}
 
-    .header-saude h1 i {
-      color: #d6f5d6;
-      font-size: 2.2rem;
-    }
+.container{
+max-width:1100px;
+margin:auto;
+background:white;
+padding:30px;
+}
 
-    .header-saude p {
-      font-size: 1.25rem;
-      opacity: 0.96;
-      max-width: 750px;
-      font-weight: 300;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
+h2{
+color:#1e3a5f;
+}
 
-    .header-saude p i {
-      color: #c2f0c2;
-    }
+footer{
+background:#1e3a5f;
+color:white;
+padding:20px;
+text-align:center;
+margin-top:40px;
+}
 
-    .conteudo-branco {
-      background: white;
-      padding: 2.5rem 3rem 2rem 3rem;
-    }
+.card{
+background:#fafafa;
+padding:20px;
+margin:20px 0;
+border-left:5px solid #1e3a5f;
+}
 
-    .grade-atendimento {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .canais-titulo {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      margin-bottom: 1.2rem;
-      width: 100%;
-    }
-
-    .canais-titulo h2 {
-      font-size: 1.8rem;
-      font-weight: 600;
-      color: #1d6e2a;
-      border-left: 7px solid #1e8a3c;
-      padding-left: 1.2rem;
-      margin-bottom: 0;
-    }
-
-    .canais-titulo i {
-      font-size: 2.2rem;
-      color: #218738;
-    }
-
-    .painel-botoes {
-      background: #f6fdf6;
-      border-radius: 2.5rem;
-      padding: 2.5rem 2rem;
-      border: 2px dashed #9fd0a5;
-      box-shadow: 0 18px 25px -12px #2d7a2d70;
-      width: 100%;
-      max-width: 650px;
-      margin: 0 auto;
-    }
-
-    .botoes-wrapper {
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-    }
-
-    .btn-canal {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 1.2rem;
-      padding: 1.4rem 1.8rem;
-      border-radius: 2.5rem;
-      font-size: 1.3rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: all 0.25s ease;
-      border: 2px solid transparent;
-      background: white;
-      color: #146e29;
-      border-color: #aad4aa;
-      box-shadow: 0 8px 14px -6px #a3c7a3;
-      width: 100%;
-      text-align: left;
-      cursor: pointer;
-    }
-
-    .btn-canal i {
-      font-size: 2.2rem;
-      width: 2.5rem;
-      color: #1d8436;
-      transition: transform 0.2s;
-    }
-
-    .btn-canal:hover {
-      background: #1d8436;
-      color: white;
-      border-color: #1d8436;
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 22px 28px -12px #1b7931;
-    }
-
-    .btn-canal:hover i {
-      color: white;
-      transform: scale(1.07);
-    }
-
-    .btn-verde-solido {
-      background: #1d8436;
-      color: white;
-      border-color: #146e29;
-    }
-
-    .btn-verde-solido i {
-      color: #dcffe3;
-    }
-
-    .btn-verde-solido:hover {
-      background: white;
-      color: #146e29;
-      border-color: #1d8436;
-    }
-
-    .btn-verde-solido:hover i {
-      color: #1d8436;
-    }
-
-    .etiqueta {
-      background: #d0eed0;
-      color: #0b5612;
-      border-radius: 40px;
-      padding: 0.3rem 1.2rem;
-      font-size: 1rem;
-      font-weight: 600;
-      margin-left: auto;
-      border: 1px solid #7bb87b;
-      letter-spacing: 0.2px;
-    }
-
-    .btn-canal .etiqueta {
-      background: #c7eac7;
-    }
-
-    .info-geral {
-      margin-top: 2rem;
-      border-top: 1px solid #bfe6bf;
-      padding-top: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 0.8rem;
-    }
-
-    .info-item {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-      color: #1f6726;
-      font-size: 1rem;
-      background: #f0faf0;
-      padding: 0.8rem 1.2rem;
-      border-radius: 2rem;
-    }
-
-    .info-item i {
-      color: #1d8436;
-      font-size: 1.3rem;
-      min-width: 1.8rem;
-    }
-
-    .info-item strong {
-      color: #0b5612;
-      font-weight: 700;
-    }
-
-    .rodape-claro {
-      background: #ffffff;
-      border-top: 2px solid #bde0bd;
-      padding: 1.2rem 3rem;
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      color: #1f6726;
-      font-size: 0.98rem;
-    }
-
-    .rodape-claro a {
-      color: #1c792c;
-      text-decoration: none;
-      border-bottom: 1px dotted #9fd0a5;
-    }
-
-    .rodape-claro a:hover {
-      color: #0c4f1a;
-      border-bottom: 2px solid #1e7e34;
-    }
-
-    @media (max-width: 850px) {
-      .header-saude {
-        padding: 1.8rem 1.8rem;
-      }
-      .conteudo-branco {
-        padding: 2rem 1.5rem;
-      }
-      .btn-canal {
-        padding: 1.2rem 1.5rem;
-        font-size: 1.2rem;
-      }
-    }
-
-    @media (max-width: 500px) {
-      .btn-canal {
-        padding: 1rem 1.2rem;
-        font-size: 1.1rem;
-      }
-      .btn-canal i {
-        font-size: 1.8rem;
-      }
-      .info-item {
-        flex-wrap: wrap;
-      }
-    }
-  </style>
+</style>
 </head>
+
 <body>
-  <div class="health-card">
-    <div class="header-saude">
-      <h1>
-        <i class="fas fa-headset"></i> 
-        Central de Atendimento
-      </h1>
-      <p>
-        <i class="fas fa-phone-alt"></i> 
-        Canais de contato · Suporte ágil e humanizado
-      </p>
-    </div>
 
-    <div class="conteudo-branco">
-      <div class="grade-atendimento">
-        <div class="painel-botoes">
-          <div class="canais-titulo">
-            <i class="fas fa-hands-helping"></i>
-            <h2>Canais disponíveis</h2>
-          </div>
-          <div class="botoes-wrapper">
-            <!-- Botão Atendimento com link do WhatsApp atualizado para 11960204412 -->
-            <a href="https://wa.me/5511960204412" target="_blank" class="btn-canal">
-              <i class="fas fa-user-headset"></i> 
-              Atendimento
-              <span class="etiqueta">0800</span>
-            </a>
-            <!-- Botão Dúvidas com link do WhatsApp atualizado para 11960204412 -->
-            <a href="https://wa.me/5511960204412" target="_blank" class="btn-canal btn-verde-solido">
-              <i class="fas fa-circle-question"></i> 
-              Dúvidas
-              <span class="etiqueta">ajuda</span>
-            </a>
-            <!-- Botão Chat e WhatsApp com link do WhatsApp atualizado para 11960204412 -->
-            <a href="https://wa.me/5511960204412" target="_blank" class="btn-canal">
-              <i class="fab fa-whatsapp"></i> 
-              Chat e WhatsApp
-              <span class="etiqueta">online</span>
-            </a>
-          </div>
+<header>
+<h1>Economia Móveis Novos LTDA</h1>
+<p>Fornecedor e distribuidor de móveis e artigos de colchoaria</p>
+</header>
 
-          <!-- Textos genéricos (mantidos sem alteração) -->
-          <div class="info-geral">
-            <div class="info-item">
-              <i class="fas fa-check-circle"></i>
-              <span><strong>Suporte completo:</strong> tire suas dúvidas rapidamente</span>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-file-lines"></i>
-              <span><strong>Orientação:</strong> informações claras e precisas</span>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-clock"></i>
-              <span><strong>Horário ampliado:</strong> segunda a sexta, 7h às 20h</span>
-            </div>
-            <div class="info-item">
-              <i class="fas fa-message"></i>
-              <span><strong>Canais digitais:</strong> chat e WhatsApp com resposta rápida</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<nav>
+<a href="#empresa">Empresa</a>
+<a href="#produtos">Produtos</a>
+<a href="#operacoes">Operações Comerciais</a>
+<a href="#politicas">Políticas</a>
+<a href="#contato">Contato</a>
+</nav>
 
-    <div class="rodape-claro">
-      <span>2025 · Central de Atendimento</span>
-      <span>
-        <a href="#">Termos</a> &nbsp;|&nbsp; 
-        <a href="#">Privacidade</a> &nbsp;|&nbsp; 
-        <a href="#">Acessibilidade</a>
-      </span>
-    </div>
-  </div>
+<div class="container">
+
+<section id="empresa">
+<h2>Sobre a Empresa</h2>
+
+<div class="card">
+<p>
+A <b>Economia Moveis Novos LTDA</b> é uma empresa brasileira especializada
+no comércio de móveis e artigos de colchoaria para residências,
+empresas e revendedores.
+</p>
+
+<p>
+A empresa atua no mercado desde 1981, fornecendo móveis e
+produtos para diversos segmentos do varejo e atacado no Brasil.
+</p>
+
+<p>
+Nosso compromisso é oferecer produtos de qualidade,
+transparência comercial e atendimento responsável aos clientes.
+</p>
+
+</div>
+
+</section>
+
+<section>
+
+<h2>Dados da Empresa</h2>
+
+<div class="card">
+
+<p><b>Razão Social:</b> Economia Moveis Novos LTDA</p>
+<p><b>CNPJ:</b> 46.999.389/0001-21</p>
+<p><b>Data de Fundação:</b> 17/09/1981</p>
+<p><b>Atividade:</b> Comércio atacadista e varejista de móveis</p>
+
+<p><b>Endereço:</b><br>
+Av. Pires do Rio, 4078<br>
+Jardim Norma – São Paulo – SP<br>
+CEP 08240-005<br>
+Brasil
+</p>
+
+</div>
+
+</section>
+
+<section id="produtos">
+
+<h2>Produtos Comercializados</h2>
+
+<div class="card">
+<ul>
+<li>Sofás</li>
+<li>Camas e colchões</li>
+<li>Mesas e cadeiras</li>
+<li>Guarda-roupas</li>
+<li>Móveis para escritório</li>
+<li>Móveis residenciais</li>
+</ul>
+
+<p>
+Os produtos são comercializados diretamente com consumidores finais
+e empresas parceiras através de canais online e atendimento comercial.
+</p>
+</div>
+
+</section>
+
+<section id="operacoes">
+
+<h2>Operações Comerciais</h2>
+
+<div class="card">
+
+<p>
+A empresa realiza vendas através de atendimento comercial,
+parcerias com revendedores e canais digitais.
+</p>
+
+<p>
+Todas as operações seguem as normas brasileiras de comércio
+eletrônico e proteção ao consumidor.
+</p>
+
+<p>
+Não realizamos práticas de redirecionamento oculto,
+cloaking ou manipulação de conteúdo para motores de busca.
+</p>
+
+<p>
+Nosso site apresenta as mesmas informações para usuários,
+clientes e plataformas de publicidade.
+</p>
+
+</div>
+
+</section>
+
+<section id="politicas">
+
+<h2>Políticas da Empresa</h2>
+
+<div class="card">
+
+<h3>Política de Privacidade</h3>
+<p>
+As informações coletadas são utilizadas exclusivamente para
+processamento de pedidos e comunicação com clientes.
+Nenhum dado é compartilhado sem autorização.
+</p>
+
+<h3>Política de Entrega</h3>
+<p>
+Os prazos de entrega variam conforme o produto e a região.
+Todas as entregas são realizadas por transportadoras parceiras.
+</p>
+
+<h3>Política de Troca e Devolução</h3>
+<p>
+O cliente pode solicitar troca ou devolução em até 7 dias
+após o recebimento, conforme o Código de Defesa do Consumidor.
+</p>
+
+</div>
+
+</section>
+
+<section id="contato">
+
+<h2>Contato</h2>
+
+<div class="card">
+
+<p>Email: contato@economiamoveis.com.br</p>
+<p>Telefone: (11) 95243-6445</p>
+
+<p>
+Endereço comercial:<br>
+Av. Pires do Rio, 4078<br>
+Jardim Norma – São Paulo – SP
+</p>
+
+</div>
+
+</section>
+
+</div>
+
+<footer>
+
+<p>© 2026 Economia Moveis Novos LTDA</p>
+<p>CNPJ: 46.999.389/0001-21</p>
+
+</footer>
+
 </body>
 </html>
